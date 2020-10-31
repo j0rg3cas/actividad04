@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+
+    <link rel="shortcut icon" href="favicon.ico" />
+        <title>T04</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/MarcChasse/leaflet.ScaleFactor/master/leaflet.scalefactor.min.css">
+    
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet"/>
+    <script src="jquery-3.4.1.js"></script>  <!-- plugin jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+    <script src="leaflet-heat.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.css" />
+   <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="posición/dist/L.Control.Locate.min.css" />
+
+    <link rel="stylesheet" href="https://leaflet.github.io/Leaflet.draw/src/leaflet.draw.css"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="geocodificar/l.geosearch.css" />
+    <link rel="stylesheet" href="fonts/style.css" />
+
+
+<style>
+		*{	
+	padding: 0% ;
+	margin: 0% 0%;		
+		}
+		
+html, body{
+	height:100% ;
+	width:100% ;
+		}
+#map{
+
+    position:left;
+    width:95%;
+    height:90%;
+    left: 4%;}
+
+ #norte{
+    position:absolute;
+    width:5.5%;
+    left: 6.8%;
+    padding: 1.2%;
+    }
+    
+#seleccionar_color{
+    position:absolute;
+    width:4%;
+    left: 1%;
+    top:78%;
+    }
+     
+        
+#INICIO-header{
+    height:100% ;
+	width:100%;
+		}
+		
+.input{font-size:20px;}
+
+
+
+#gif{
+    position:;
+    left;
+    
+}
+    </style>
+}
+
+</head>
+
+<body>
+
+   
+
+    <nav  class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+       <!--<a class="navbar-brand" href="#">Proyecto SIG 3</a> -->
+         <img src="./img.jpg" width="50px" height="auto" />
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                    </a>
+                </li>
+ 				<li class="nav-item">
+                    <a class="nav-link" href="#INICIO-header">
+                        <spant class= "icon-mail">INICIO
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#mototrip-header">
+                        <spant class= "icon-cog">COVID-19
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#somos-header">
+                        <spant class= "icon-gauge">QUIENES SOMOS
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacto-header">
+                        <spant class= "icon-flag">CONTACTO
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+        <div class="row" id="INICIO-header">
+        <div style="margin-top: 3%">
+        <div class="row">
+                <div class="col-md-8" >
+				<div id="map" style="z-index:0">
+					<img id="norte" src="norte1.png" style="z-index:9999" ></img>
+					
+
+					<input id="seleccionar_color" type="color" style="z-index:9999">
+
+				</div>
+
+           		</div>
+            <div class="col-md-4">
+                <div id="admin-area" class="card" style="width: 0rem; margin-top: 0%">
+            </div>
+                <div class="card" style="width: 22.5rem">
+                    <div class="card-header">
+                        FORMULARIO PACIENTE
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <p id="myLocation">Haz clic para hallar calcular Coordenadas</p>
+                            Latitud: <input type="text" id="lat_g" value="3"> </input>dd
+                            <input type="text" id="lat_m" value="20"> </input>mm
+                            <input type="text" id="lat_s" value="12"> </input>ss
+                            <select id="lat_hemis">
+                             <option value="N">N</option>
+                             <option value="S">S</option>
+                            </select>
+                            <br>
+                            Longitud: <input type="text" id="lon_g" value="76"></input>dd
+                            <input type="text" id="lon_m" value="32"> </input>mm
+                            <input type="text" id="lon_s" value="29.39"> </input>ss
+                            <select id="lon_hemis">
+                            <option value="W">W</option>
+                            <option value="E">E</option>
+                            </select>
+                            <br><br>
+                            <button id="boton_calcular"> Calcular Coordenadas</button> 
+                            <br>
+                            <div id="caja_resultado"> </div>
+                            <br>
+                           
+                             </li>
+                        <button id="boton-ubicacion" type="button" class="btn btn-primary">
+                           <spant class= "leaflet-control-locate-location">Tomar ubicacion
+                            </button>
+                        <li class="list-group-item not-visible">
+                           <!--<input type="date"><br-->
+                            <!-- input para seleccionar fecha 
+                             </li-->
+                            <br>
+                            <div id="caja_resultado"> </div>
+                            <br>
+                    </ul>
+                </div>
+                <ul>
+                </ul>
+
+                  </div>
+                      </div>
+         <div class="row" id="mototrip-header">
+         <div class="col-md-10" style="margin: auto; margin-top: 100px">
+         <div class="jumbotron">            
+
+
+                        <h1 class="text-center">COVID 19</h1>
+                        <p>
+                      
+                        Los coronavirus (CoV) son virus que surgen periódicamente en diferentes áreas del mundo y que causan Infección Respiratoria Aguda (IRA), es decir gripa, que pueden llegar a ser leve, moderada o grave.
+
+                        El nuevo Coronavirus (COVID-19) ha sido catalogado por la Organización Mundial de la Salud como una emergencia en salud pública de importancia internacional (ESPII). Se han identificado casos en todos los continentes y, el 6 de marzo se confirmó el primer caso en Colombia.
+
+                        La infección se produce cuando una persona enferma tose o estornuda y expulsa partículas del virus que entran en contacto con otras personas. <strong></strong> El Aislamiento Preventivo Obligatorio en Colombia se extiende hasta el 31 de agosto.
+
+                       <br />
+                        Decreto 847 de 2020 <a href="https://coronaviruscolombia.gov.co/Covid19/estadisticas-covid-19/ayuda-social.html">COVID-19 UP</a></h1>
+                      <p>La prevención es tarea de todos, por eso hemos lanzado una aplicación en la que tú nos puedes ayudar a controlar esta situación.
+                           <br />    ¡Juntos podemos combatir el virus!?</p>
+                          
+                </p>
+                </div>
+
+
+                         <div class="checkbox">
+                         <h4>Dificultad para respirar?</h4>
+                         </div>
+                         <label for="range"><h4> Rango:</label>
+                         <input id="range" type="range" min="0" max="10" step="1" list="lista"/>
+						 <datalist id="lista">
+						  <option value="0" >
+						  <option value="1">
+						  <option value="2">
+						  <option value="3">
+						  <option value="4">
+						  <option value="5">
+						  <option value="6">
+						  <option value="7">
+						  <option value="8">
+						  <option value="9">
+						  <option value="10">
+						</datalist>
+                         <p id="textInput"></p></h4>
+
+                         <div class="checkbox">
+                         <h4>Perdidad del olfato?
+                        </div>
+                        <button id=" Perdidad del olfator?" type="button" class="btn btn-primary">
+                               SI  </button>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <button id=" Perdidad del olfato?" type="button" class="btn btn-primary">
+                               NO  </button></h4>
+
+                        <div class="checkbox">
+                              	<h4>Perdidad del gusto?<br>
+                                <input type="radio" name="checkbox">
+                                <label for="checkbox">Si</label>&nbsp;&nbsp;&nbsp;&nbsp; 
+                                <input type="radio" name="checkbox">
+                                <label for="checkbox">No</label>
+                               
+							   </div></h4>
+
+                        <div class="checkbox">
+                                <h4>Presenta Fiebre?<br>
+                                <input type="radio" name="checkbox">
+                                <label for="checkbox">Si</label>&nbsp;&nbsp;&nbsp;&nbsp; 
+                                <input type="radio" name="checkbox">
+                                <label for="checkbox">No</label>
+                               
+							   </div></h4>
+
+                        <div class="checkbox">
+                                <h4>Dificultad para respirar?<br>
+                                <input type="radio" name="checkbox">
+                                <label for="checkbox">Si</label>&nbsp;&nbsp;&nbsp;&nbsp; 
+                                <input type="radio" name="checkbox">
+                                <label for="checkbox">No</label>
+                               
+							   </div></h4>
+                              	
+                        <div class="checkbox">
+                               <h4> Presenta dolor de Cabeza?<br>
+                                <input type="radio" name="checkbox">
+                                <label for="checkbox">Si</label>&nbsp;&nbsp;&nbsp;&nbsp; 
+                                <input type="radio" name="checkbox">
+                                <label for="checkbox">No</label>
+                               
+							   </div></h4>
+                    
+                               	</h4>
+                                <h4>Ha estado en Contacto con alguien que sea positivo o Sospechoso para Covid? <br>
+                                <input type="radio" name="checkbox">
+                                <label for="checkbox">Si</label>&nbsp;&nbsp;&nbsp;&nbsp; 
+                                <input type="radio" name="checkbox">
+                                <label for="checkbox">No</label>
+                               
+								</h4>
+                
+
+                       	<div class="checkbox">
+                               <h4>Si presenta Malestar General Marque el rango:<br> </h4>
+                               </div>
+                     	       <label for="range"><h4>Rango:</label>
+                               <input id="range2" type="range" min="0" max="10" list="lista1">
+                               <datalist id="lista1">
+                              <option value="0" >
+                              <option value="1">
+                              <option value="2">
+                              <option value="3">
+                              <option value="4">
+                              <option value="5">
+                              <option value="6">
+                              <option value="7">
+                              <option value="8">
+                              <option value="9">
+                              <option value="10">
+                            </datalist><input type="button" id="mandar" value="Mostrar">
+                            <div id="div_lista"></div> <br><br> </h4>          <!-- input tipo rango con boton para visualizar en un div la información que se selecciona  -->
+                               
+
+            </div>
+        </div>
+        <div class="row" id="somos-header">
+            <div class="col-md-10" style="margin: auto; margin-top: 100px">
+                <div class="jumbotron">
+
+                    <h1 class="text-center">QUIENES SOMOS</h1>
+                    <h2>Un equipo dedicado al desarrollo de Aplicaciones Para ayudar a detectar y prevenir el Covid.</h2>
+                    <p>
+                        <p>
+                            UNIVERSIDAD DEL VALLE
+                            Dirección: PBX: Cali - Colombia
+                            Ciudad Universitaria Meléndez +57 2 3212100 O 1994 - 2018
+                            Calle 13 # 100-00 A.A.25360
+                            Sede San Fernando Calle 4B N°36-00.
+                        </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="contacto-header">
+            <div class="col-md-10" style="margin: auto; margin-top: 100px">
+                <!-- <div class="jumbotron"> -->
+                <h1 class="text-center">CONTACTO</h1>
+                <br>
+                <div class="row justify-content-md-center">
+                    <div class="col-md-3 ">
+                        <h3>Estudiantes</h3>
+                        <p>Jorge Castaño</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>Telefonos</h3>
+                        <p>(+57) 318 283 2642</p>
+                     </div>
+                    <div class="col-md-3">
+                        <h3>Correos</h3>
+
+                        <p>jorge.castano@correounivalle.edu.co</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <br>
+
+                    <div class="col-md-6" style="margin: auto; margin-top: 15px">
+                        <h2 id="contacto-header">Escribenos</h2>
+                        <br>
+                        <form action="post">
+                            <div class="form-group">
+                                <input type="text" placeholder="Nombre" class="form-control" name="nombre">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" placeholder="Correo" class="form-control" name="correo">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" placeholder="Organizacion" class="form-control" name="organizacion">
+                            </div>
+
+                            <div class="form-group">
+                                <textarea name="mensaje" placeholder="Mensaje" class="form-control" id="mensaje"
+                                    cols="30" rows="6"></textarea>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+
+        </div>
+    </div>
+
+     </body>
+
+    <script src="https://npmcdn.com/jquery@3.0.0/dist/jquery.min.js"></script>
+       
+    <script src="https://rawgit.com/MarcChasse/leaflet.ScaleFactor/master/leaflet.scalefactor.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.js"></script>
+    <script src="posición/src/L.Control.Locate.js" ></script>
+    <script src="https://kit.fontawesome.com/02eb88b373.js" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
+    <script src="print/dist/bundle.js"></script>
+    <script src="spin/spin.min.js" charset="utf-8"></script>
+    <script src="spin/leaflet.spin.min.js" charset="utf-8"></script>  
+
+    <script src="geocodificar/l.control.geosearch.js"></script>
+    <script src="geocodificar/l.geosearch.provider.esri.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+    <script src="globeminimap/src/Control.GlobeMiniMap.js"></script>
+    <script src="csv/leaflet.geocsv.js"></script>
+
+    <script src="graticule/Leaflet.Graticule.js"></script>
+
+    <link rel="stylesheet" href="betterscale/L.Control.BetterScale.css" />
+    <script src="betterscale/L.Control.BetterScale.js"></script>
+    <script src="choropleth/choropleth.js" ></script>
+    <script src="../dist/leaflet.browser.print.min.js"></script>
+    <script src="src/leaflet.browser.print.js"></script>
+    <script src="src/leaflet.browser.print.utils.js"></script>
+    <script src="src/leaflet.browser.print.sizes.js"></script>
+
+	<script>
+                                              
+                    // var map = L.map('map',
+                    // {  zoom: 15
+                    //  }).setView([3.466019, -76.532962],15);////SE INSERTA UN MAPA EN EL DIV "map" //con coordenadas 3.42335,-76.52086//comuna 2:3.466019, -76.532962
+
+
+                        var map = L.map('map', {
+                            maxZoom: 18,
+                           // minZoom: 13,
+                           maxBounds: [
+                                //south west
+                               [3.296361, -76.608913],
+                                //north east
+                               [3.532298, -76.438422]
+                                ], 
+                        }).setView([3.415616, -76.523954], 11.2);
+                        	///-3.487787, -76.528332
+                                     
+                        var mapabase = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
+                            {
+                                maxZoom: 18,
+                                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                            });
+                        
+                        var mapabase2 = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', 
+                            {
+                                maxZoom: 18,
+                                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                            })
+                        
+
+                        mapabase.addTo(map);
+                        
+                        L.control.scale({position:'bottomleft'}).addTo(map);
+                        var leyenda = L.control.layers({mapabase,mapabase2}).addTo(map);
+
+
+                        L.control.locate({setView:'false',flyto:'false',drawCircle:'false',showCompass:'true',drawMarker:'false',keepCurrentZoomLevel:'true',locateOptions: {
+                                   enableHighAccuracy: true}}).addTo(map);
+                        
+
+/////// insertams la graticula
+                         L.latlngGraticule({
+                                showLabel: true,
+                                 opacity:0.7,
+                                 color: 'black',
+                                 zoomInterval: [
+                                      {start: 12, end: 18, interval: 0.03125}
+                                    ]
+                                }).addTo(map);
+
+
+                        var icono = L.icon({
+                                iconSize: [35, 35],
+                                iconUrl:'images/winebar.png'
+                                });
+                                
+                        var icono2 = L.icon({
+                                iconSize: [35, 35],
+                                iconUrl:'images/busstop.png'
+                                });
+                        var icono3 = L.icon({
+                                iconSize: [35, 35],
+                                iconUrl:'images/hotel.png'
+                                });
+
+                        var icono4 = L.icon({
+                                iconSize: [40, 35],
+                                iconUrl:'images/numbers/number_10.png'
+                                });
+
+                        var geojsonFeature = [{
+
+                       
+                         },{
+                        "type": "Feature",
+                        "properties": {"id":"01"},
+                         "geometry": {
+                            "type": "Point",
+                            "coordinates": [-76.505326,3.491492]
+                           
+                        }
+                        },{
+                        "type": "Feature",
+                        "properties": {"id":"02"},                        
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-76.529516,3.467757]
+                            
+                            
+                        }
+                        },{
+                        "type": "Feature",
+                        "properties": {"id":"03"},                        
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-76.527875,3.470038]
+                            
+                            
+                        }
+                        },{
+                        "type": "Feature",
+                         "properties": {"id":"04"},                       
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-76.527221,3.471141]
+                            
+                            
+                        }
+                        },{
+                        "type": "Feature",
+                        "properties": {"id":"05"},                        
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-76.526497,3.472496]
+                            
+                            
+                        }
+                        },{
+                        "type": "Feature",
+                        "properties": {"id":"06"},                        
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-76.529880,3.476132]
+                        }
+                        },{
+                        "type": "Feature",
+                        "properties": {"id":"07"},                        
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-76.529880,3.476132]
+                        }
+                        }, {
+                        "type": "Feature",
+                        "properties": {"id":"08"},                        
+                        "geometry": {
+                        "type": "Point",
+                         "coordinates": [-76.536759,3.454929]
+                            }
+                        },
+                        {
+                        "type": "Feature",
+                        "properties": {"id":"09"},                        
+                        "geometry": {
+                        "type": "Point",
+                         "coordinates": [-76.534702,3.457321]
+                            }
+                        },
+                        {
+                        "type": "Feature",
+                        "properties": {"id":"10"},                        
+                        "geometry": {
+                        "type": "Point",
+                         "coordinates": [-76.536223,3.458253]
+                            }
+                        },{
+                        "type": "Feature",
+                        "properties": {"id":"11"},                        
+                        "geometry": {
+                        "type": "Point",
+                         "coordinates": [-76.541512,3.454939]
+                            }
+                        },
+                        {
+                        "type": "Feature",
+                        "properties": {"id":"12"},                        
+                        "geometry": {
+                        "type": "Point",
+                         "coordinates": [-76.537175,3.458616]
+                            }
+                        }                   ];     
+                        
+                        var estilo = 
+                            {
+                                triangle: 7,
+                                fillColor: "yellow",
+                                color: "yellow",
+                                weight: 1,
+                                opacity: 1,
+                                fillOpacity: 1,
+                            };
+                            
+                        var encima = 
+                            {
+                                triangle: 7,
+                                fillColor: "cyan",
+                                color: "cyan",
+                                weight: 1,
+                                opacity: 1,
+                                fillOpacity: 1,
+                            };
+                            
+
+
+                        var estilo2 = L.icon( {
+                                iconSize: [10, 10],
+                                iconAnchor: [5, 10],
+                                popupAnchor:  [1, -24],
+                                //iconUrl: 'images/ejemplo.png'
+                                });
+
+
+                            var marcador = L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.circleMarker(latlng, estilo2).bindTooltip(feature.properties.id,{permanent: true, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()}});
+
+                            var marcador2 = L.marker([3.462020, -76.534378],{icon:icono2}).bindTooltip("Clinica Policia",{permanent: true, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()
+
+                            var marcador3 = L.marker([3.455970, -76.536040],{icon:icono4}).bindTooltip("Marriott",{permanent: false, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()
+
+                            var marcador4 = L.marker([3.457520, -76.536627],{icon:icono3}).bindTooltip("Now",{permanent: false, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()
+
+
+			                var marcador1 = L.geoJSON();
+                            var arrayPoints='[';
+
+                             
+			                         function cargarM(indicador){
+
+			                         if (indicador ==0){
+			                            marcador2 =L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.marker (latlng, {icon:icono3})}}).addTo(map);
+			                                }
+
+			                          if (indicador ==1){
+			                            marcador2 =L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.marker (latlng, {icon:icono})}}).addTo(map);
+
+			                                }; map.fitBounds(marcador2.getBounds()); }
+			                                
+///////////////////////modo de ingresar popup de coordenadas en el mapa.
+                                        var popup = L.popup();  
+                                            function onMapClick(e) {
+                                                popup
+                                                    .setLatLng(e.latlng)
+
+                                                    .setContent("Coordenadas:  " + e.latlng.lat+ " "+ e.latlng.lng)
+                                                    //.setContent("Coordenadas:" + e.latlng.toString())
+                                                    .openOn(map);
+                                            }
+                                                map.on('click', onMapClick);
+                                        
+                                                        // ///  
+
+                            /////////////agregar marcadores con el click derecho
+                                          //  map.on("contextmenu", function (event) {
+                                            //  console.log("user right-clicked on map coordinates: " + event.latlng.toString());
+                                           //   L.marker(event.latlng).addTo(map);
+                                         //   });
+//
+                                                                                         
+                        //LINK PARA ICONOS https://www.freepik.com/popular-icons    
+
+
+                        L.easyButton('<img src="iconos/restart.png"  align="absmiddle" height="20px" >', function() 
+                            {
+                            alert('reiniciando pagina');
+                            location.reload();
+
+                            }).addTo(map);
+                            
+                                
+                        L.easyButton('<img src="iconos/zoom.png"  align="absmiddle" height="25px" >', function() 
+                            {
+                            
+                            cargarM(0);
+                            
+                            leyenda.addOverlay(marcador, 'Paradas');
+                            leyenda.addOverlay(marcador1, 'Paradas2');
+                            leyenda.addOverlay(marcador2, 'Clinica Policia');
+                            leyenda.addOverlay(marcador3, 'Marriott');
+                            leyenda.addOverlay(marcador4, 'Now');
+                            
+
+                            
+                            //map.flyTo([marcador3._latlng.lat,marcador3._latlng.lng], 15);
+                            //map.flyTo([marcador4._latlng.lat,marcador4._latlng.lng], 15);
+
+                            }).addTo(map);
+                            
+                            
+                        L.easyButton('<img src="iconos/colors.png"  align="absmiddle" height="16px" position="absolute" >', function() 
+                            {
+                            var colors = $('#seleccionar_color').val();
+                                    
+                            var color_click = 
+                            {
+                                radius: 7,
+                                fillColor: $('#seleccionar_color').val(),
+                                color: "cyan",
+                                weight: 1,
+                                opacity: 1,
+                                fillOpacity: 1,
+                            };
+                            marcador.setStyle(color_click);
+                            
+                            
+                            marcador.on('mouseover', function() 
+                                { 
+                                    this.setStyle(encima);              
+                                });
+                            marcador.on('mouseout', function() 
+                                {
+                                    this.setStyle(color_click);
+                                }); 
+
+                            }).addTo(map);
+                            
+
+                        L.easyButton('<img src="iconos/heatmap.png"  align="absmiddle" height="16px" >', function() 
+                            {   
+                   
+                       
+                       var capaGeojson2 = L.geoJson(geojsonFeature, {onEachFeature: 
+                                    function onEachFeature(feature, layer) 
+                                        {
+                                            //var alea=Math.floor((Math.random() * 100) + 1);
+                                      arrayPoints+='['+feature.geometry.coordinates[1]+','+feature.geometry.coordinates[0]+',"'+feature.properties.valor+'"],';   
+                                        } 
+                                    });
+                                    var y=arrayPoints.substring(0, arrayPoints.length - 1);
+                                    arrayPoints=y+'];';
+                                    var heat = L.heatLayer(eval(arrayPoints),{radius:30}).addTo(map);
+                            
+
+                            
+                            }).addTo(map);
+                        
+                                console.log(marcador);
+                              
+                        L.easyButton('<img src="iconos/off.png"  align="absmiddle" height="20px" >', function()
+                        {
+                            map.removeLayer(marcador);
+                           cargarM(1);
+
+
+                            }).addTo(map);
+
+  /////// ingresar la barra de dibujo
+                        var drawnItems = new L.FeatureGroup();
+
+                                    var drawControl = new L.Control.Draw({
+                                        position: 'topright',
+                                        edit: {
+                                            featureGroup: drawnItems,
+                                            remove: true,
+                                            edit: false,
+                                        },
+                                        draw: {
+                                            circlemarker: false,
+                                            circle:true,
+                                            rectangle:false,
+                                            marker:false,
+                                        }
+                                    });
+                                    map.addControl(drawControl);
+                                    
+                            map.on(L.Draw.Event.CREATED, function (e) {
+                                        var type = e.layerType,
+                                            layer = e.layer;
+
+                                        if (type === 'marker') {
+                                            layer.bindPopup('A popup!');
+                                        }
+
+                                        drawnItems.addLayer(layer);
+                                        map.addLayer(drawnItems);
+                                    });
+
+                            ///boton para imprimir
+
+                                var printer = L.easyPrint({
+                                             position: 'topright',
+                                             tileLayer: mapabase,
+                                             sizeModes: ['Current', 'A4Landscape', 'A4Portrait'],
+                                            filename: 'map',
+                                             exportOnly: true,
+                                            hideControlContainer: true
+                                         }).addTo(map);
+
+                                        function manualPrint () {
+                                            printer.printMap('CurrentSize', 'MyManualPrint')
+                                        }
+
+
+                                        console.log();
+
+
+
+/////////////////////////////GEOCODIFICADOR+
+                        new L.Control.GeoSearch({provider: new L.GeoSearch.Provider.Esri()}).addTo(map);    
+    
+
+                        
+                        var barrios = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+                            {
+                            layers: 'idesc:mc_barrios',
+                            format: 'image/png',
+                            transparent: true,
+                            });
+                            map.addLayer(barrios);
+                                                    
+                            
+                        var comunas = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+                            {
+                            layers: 'idesc:mc_comunas',
+                            format: 'image/png',
+                            transparent: true,
+                            });
+                            map.addLayer(comunas);
+                            
+                        var manzanas = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+                            {
+                            layers: 'idesc:est_estrato_social_lado_manzana',
+                            format: 'image/png',
+                            transparent: true,
+                            });
+                            map.addLayer(manzanas);
+                            
+                        
+
+                        leyenda.addOverlay(barrios, 'Barrios');
+                        leyenda.addOverlay(comunas, 'Comunas');
+                        leyenda.addOverlay(manzanas, 'est_Estrato');
+                        
+						
+                    L.control.scalefactor().addTo(map);
+//////////////////Cargo el spin y los marcadores que van con el spin
+                        map.spin(true);
+                            setTimeout(function () {
+                                map.addLayer(marcador3,marcador4);    
+                                map.spin(false);}, 3000);
+                                                    
+//////////////////////escala de barra
+        L.control.betterscale({position:'bottomright'}).addTo(map);
+
+ //////////////insertar lectura de archivos csv
+               function csv(){
+                  'use strict';
+
+                  $.get('csv/terreno.csv', function(csvContents) {
+                    var geoLayer = L.geoCsv(csvContents, {firstLineTitles: true, fieldSeparator: ';'});
+                    map.addLayer(geoLayer);
+                  });
+                };
+                csv();
+  /////inserto el mini mapa global              
+                var miniMap = new L.Control.GlobeMiniMap({
+                  //uncomment to assign colors
+                  // land:'#FFFF00',
+                  // water:'#3333FF',
+                  // marker:'#000000'
+                  topojsonSrc : 'globeminimap/src/world.json'
+                }).addTo(map);  
+
+///////////////////ARCHIVOS DE MAPAS COROPLETICOS 
+
+            $.getJSON('choropleth/b19.geojson', function (geojson) {
+              L.choropleth(geojson, {
+                valueProperty: 'ID_BARRIO',
+                scale: ['blue', 'green'],
+                steps: 15,
+                mode: 'q',
+                style: {
+                  color: '#fff',
+                  weight: 2,
+                  fillOpacity: 0.8
+                 
+                },
+                onEachFeature: function (feature, layer) {
+
+                }
+              }).addTo(map)
+
+            });
+
+/////////////////////insertR FUNCION DE CALCULO DE COORDENAADAS
+
+        
+    $( document ).ready(function() 
+    {
+       
+        $("#boton_calcular").click(function()
+        {
+            $.post("base_de_datos/ejemplo3.php",
+            {
+                lat_g: $("#lat_g").val(),
+                lat_m: $("#lat_m").val(),
+                lat_s: $("#lat_s").val(),
+                lat_hemis: $( "#lat_hemis option:selected" ).text() ,
+                lon_g: $("#lon_g").val(),
+                lon_m: $("#lon_m").val(),
+                lon_s: $("#lon_s").val(),
+                lon_hemis: $( "#lon_hemis option:selected" ).text() 
+            },
+            function(data, status){
+                console.log("Datos recibidos: " + data + "\nStatus: " + status);
+                if(status=='success')
+                {
+                    $("#caja_resultado").html( data );
+                }
+            });
+            
+        });
+        
+        
+    });
+    /////////////imprimir png
+        
+               
+    </script>
+</html>

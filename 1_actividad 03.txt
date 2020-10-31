@@ -1,0 +1,8 @@
+
+A partir de los ejemplos vistos en los vídeos modificar la aplicación que llevan hasta el momento (clase anterior) para que contenga:
+
+Escala numérica (preferiblemente convencional o comercial).
+Ubicación GPS.
+Herramienta Geocodificación (personalizada)
+Cuadricula coordenadas (pocos decimales).
+Opcional: From-To, Lupa

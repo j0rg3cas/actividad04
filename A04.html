@@ -651,14 +651,10 @@ html, body{
                                         
                                                         // ///  
 
-                            /////////////agregar marcadores con el click derecho
-                                          //  map.on("contextmenu", function (event) {
-                                            //  console.log("user right-clicked on map coordinates: " + event.latlng.toString());
-                                           //   L.marker(event.latlng).addTo(map);
-                                         //   });
+
 //
                                                                                          
-                        //LINK PARA ICONOS https://www.freepik.com/popular-icons    
+        //LINK PARA ICONOS https://www.freepik.com/popular-icons    
 
 
                         L.easyButton('<img src="iconos/restart.png"  align="absmiddle" height="20px" >', function() 
@@ -776,7 +772,7 @@ html, body{
                                         map.addLayer(drawnItems);
                                     });
 
-                            ///boton para imprimir
+///boton para imprimir
 
                                 var printer = L.easyPrint({
                                              position: 'topright',
@@ -862,59 +858,8 @@ html, body{
                   topojsonSrc : 'globeminimap/src/world.json'
                 }).addTo(map);  
 
-///////////////////ARCHIVOS DE MAPAS COROPLETICOS 
 
-            $.getJSON('choropleth/b19.geojson', function (geojson) {
-              L.choropleth(geojson, {
-                valueProperty: 'ID_BARRIO',
-                scale: ['blue', 'green'],
-                steps: 15,
-                mode: 'q',
-                style: {
-                  color: '#fff',
-                  weight: 2,
-                  fillOpacity: 0.8
-                 
-                },
-                onEachFeature: function (feature, layer) {
 
-                }
-              }).addTo(map)
-
-            });
-
-/////////////////////insertR FUNCION DE CALCULO DE COORDENAADAS
-
-        
-    $( document ).ready(function() 
-    {
-       
-        $("#boton_calcular").click(function()
-        {
-            $.post("base_de_datos/ejemplo3.php",
-            {
-                lat_g: $("#lat_g").val(),
-                lat_m: $("#lat_m").val(),
-                lat_s: $("#lat_s").val(),
-                lat_hemis: $( "#lat_hemis option:selected" ).text() ,
-                lon_g: $("#lon_g").val(),
-                lon_m: $("#lon_m").val(),
-                lon_s: $("#lon_s").val(),
-                lon_hemis: $( "#lon_hemis option:selected" ).text() 
-            },
-            function(data, status){
-                console.log("Datos recibidos: " + data + "\nStatus: " + status);
-                if(status=='success')
-                {
-                    $("#caja_resultado").html( data );
-                }
-            });
-            
-        });
-        
-        
-    });
-    /////////////imprimir png
         
                
     </script>

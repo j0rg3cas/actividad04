@@ -2,23 +2,22 @@
 <html lang="es">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
 
     <link rel="shortcut icon" href="favicon.ico" />
-        <title>Goe</title>
+        <title>T03</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="https://rawgit.com/MarcChasse/leaflet.ScaleFactor/master/leaflet.scalefactor.min.css">
     
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet"/>
+
     <script src="jquery-3.4.1.js"></script>  <!-- plugin jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+        
     <script src="leaflet-heat.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.css" />
-   <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.1/dist/leaflet.css" />
+   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
         integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
     <link rel="stylesheet" href="posición/dist/L.Control.Locate.min.css" />
@@ -30,20 +29,20 @@
 
 
 <style>
-		*{	
-	padding: 0% ;
-	margin: 0% 0%;		
-		}
-		
+        *{  
+    padding: 0% ;
+    margin: 0% 0%;      
+        }
+        
 html, body{
-	height:100% ;
-	width:100% ;
-		}
+    height:100% ;
+    width:100% ;
+        }
 #map{
 
     position:left;
-    width:95%;
-    height:90%;
+    width:90%;
+    height:95%;
     left: 4%;}
 
  #norte{
@@ -63,9 +62,9 @@ html, body{
         
 #INICIO-header{
     height:100% ;
-	width:100%;
-		}
-		
+    width:100%;
+        }
+        
 .input{font-size:20px;}
 
 
@@ -96,7 +95,7 @@ html, body{
             <ul class="navbar-nav mr-auto">
                     </a>
                 </li>
- 				<li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="#INICIO-header">
                         <spant class= "icon-mail">INICIO
                     </a>
@@ -123,60 +122,46 @@ html, body{
     </nav>
 
         <div class="row" id="INICIO-header">
-        <div style="margin-top: 3%">
+        <div style="margin-top: 5%">
         <div class="row">
                 <div class="col-md-8" >
-				<div id="map" style="z-index:0">
-					<img id="norte" src="norte1.png" style="z-index:9999" ></img>
-					
+                <div id="map" style="z-index:0">
+                    <img id="norte" src="norte1.png" style="z-index:9999" ></img>
+                    
 
-					<input id="seleccionar_color" type="color" style="z-index:9999">
+                    <input id="seleccionar_color" type="color" style="z-index:9999">
 
-				</div>
+                </div>
 
-           		</div>
+                </div>
             <div class="col-md-4">
-                <div id="admin-area" class="card" style="width: 0rem; margin-top: 0%">
+                <div id="admin-area" class="card" style="width: 0rem; margin-top: 5%">
             </div>
-                <div class="card" style="width: 22.5rem">
+                <div class="card" style="width: 20.5rem">
                     <div class="card-header">
                         FORMULARIO PACIENTE
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <p id="myLocation">Haz clic para hallar calcular Coordenadas</p>
-                            Latitud: <input type="text" id="lat_g" value="3"> </input>dd
-                            <input type="text" id="lat_m" value="20"> </input>mm
-                            <input type="text" id="lat_s" value="12"> </input>ss
-                            <select id="lat_hemis">
-                             <option value="N">N</option>
-                             <option value="S">S</option>
-                            </select>
-                            <br>
-                            Longitud: <input type="text" id="lon_g" value="76"></input>dd
-                            <input type="text" id="lon_m" value="32"> </input>mm
-                            <input type="text" id="lon_s" value="29.39"> </input>ss
-                            <select id="lon_hemis">
-                            <option value="W">W</option>
-                            <option value="E">E</option>
-                            </select>
-                            <br><br>
-                            <button id="boton_calcular"> Calcular Coordenadas</button> 
-                            <br>
-                            <div id="caja_resultado"> </div>
-                            <br>
-                           
-                             </li>
-                        <button id="boton-ubicacion" type="button" class="btn btn-primary">
-                           <spant class= "leaflet-control-locate-location">Tomar ubicacion
+                            <p id="myLocation">Haz clic para hallar tu ubicacion</p>
+                            <button id="boton-ubicacion" type="button" class="btn btn-primary">
+                                <spant class= "leaflet-control-locate-location">Tomar ubicacion
+
                             </button>
+                             </li>
                         <li class="list-group-item not-visible">
-                           <!--<input type="date"><br-->
-                            <!-- input para seleccionar fecha 
-                             </li-->
-                            <br>
-                            <div id="caja_resultado"> </div>
-                            <br>
+                            <input type="date"><br><br><!-- input para seleccionar fecha -->
+                            <input type="Nombre" placeholder="Nombre" id="Nombre"><br><br> <!-- input para introducir contraseña -->        <form>  <!-- definir un formulario -->
+                        <input type="email" placeholder="email" id="email"> <!-- input para introducir email y añadir indicación-->     </form>
+                    </form> 
+                        <input type="radio" name="Femenino" value="Femenino">Femenino
+                        <input type="radio" name="Masculino" value="Masculino">Masculino<br> <!-- input para introducir opción circular--></form>
+                        </li>
+                        <li class="list-group-item not-visible">
+                            <label>Observaciones</label>
+                            <input id="observaciones-input" type="text" placeholder="observaciones" />
+                             </li>
+
                     </ul>
                 </div>
                 <ul>
@@ -212,19 +197,19 @@ html, body{
                          </div>
                          <label for="range"><h4> Rango:</label>
                          <input id="range" type="range" min="0" max="10" step="1" list="lista"/>
-						 <datalist id="lista">
-						  <option value="0" >
-						  <option value="1">
-						  <option value="2">
-						  <option value="3">
-						  <option value="4">
-						  <option value="5">
-						  <option value="6">
-						  <option value="7">
-						  <option value="8">
-						  <option value="9">
-						  <option value="10">
-						</datalist>
+                         <datalist id="lista">
+                          <option value="0" >
+                          <option value="1">
+                          <option value="2">
+                          <option value="3">
+                          <option value="4">
+                          <option value="5">
+                          <option value="6">
+                          <option value="7">
+                          <option value="8">
+                          <option value="9">
+                          <option value="10">
+                        </datalist>
                          <p id="textInput"></p></h4>
 
                          <div class="checkbox">
@@ -236,13 +221,13 @@ html, body{
                                NO  </button></h4>
 
                         <div class="checkbox">
-                              	<h4>Perdidad del gusto?<br>
+                                <h4>Perdidad del gusto?<br>
                                 <input type="radio" name="checkbox">
                                 <label for="checkbox">Si</label>&nbsp;&nbsp;&nbsp;&nbsp; 
                                 <input type="radio" name="checkbox">
                                 <label for="checkbox">No</label>
                                
-							   </div></h4>
+                               </div></h4>
 
                         <div class="checkbox">
                                 <h4>Presenta Fiebre?<br>
@@ -251,7 +236,7 @@ html, body{
                                 <input type="radio" name="checkbox">
                                 <label for="checkbox">No</label>
                                
-							   </div></h4>
+                               </div></h4>
 
                         <div class="checkbox">
                                 <h4>Dificultad para respirar?<br>
@@ -260,8 +245,8 @@ html, body{
                                 <input type="radio" name="checkbox">
                                 <label for="checkbox">No</label>
                                
-							   </div></h4>
-                              	
+                               </div></h4>
+                                
                         <div class="checkbox">
                                <h4> Presenta dolor de Cabeza?<br>
                                 <input type="radio" name="checkbox">
@@ -269,22 +254,22 @@ html, body{
                                 <input type="radio" name="checkbox">
                                 <label for="checkbox">No</label>
                                
-							   </div></h4>
+                               </div></h4>
                     
-                               	</h4>
+                                </h4>
                                 <h4>Ha estado en Contacto con alguien que sea positivo o Sospechoso para Covid? <br>
                                 <input type="radio" name="checkbox">
                                 <label for="checkbox">Si</label>&nbsp;&nbsp;&nbsp;&nbsp; 
                                 <input type="radio" name="checkbox">
                                 <label for="checkbox">No</label>
                                
-								</h4>
+                                </h4>
                 
 
-                       	<div class="checkbox">
+                        <div class="checkbox">
                                <h4>Si presenta Malestar General Marque el rango:<br> </h4>
                                </div>
-                     	       <label for="range"><h4>Rango:</label>
+                               <label for="range"><h4>Rango:</label>
                                <input id="range2" type="range" min="0" max="10" list="lista1">
                                <datalist id="lista1">
                               <option value="0" >
@@ -378,14 +363,14 @@ html, body{
 
      </body>
 
+    
     <script src="https://npmcdn.com/jquery@3.0.0/dist/jquery.min.js"></script>
-       
     <script src="https://rawgit.com/MarcChasse/leaflet.ScaleFactor/master/leaflet.scalefactor.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.js"></script>
     <script src="posición/src/L.Control.Locate.js" ></script>
     <script src="https://kit.fontawesome.com/02eb88b373.js" crossorigin="anonymous"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
     <script src="print/dist/bundle.js"></script>
     <script src="spin/spin.min.js" charset="utf-8"></script>
@@ -395,22 +380,14 @@ html, body{
     <script src="geocodificar/l.geosearch.provider.esri.js"></script>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
-    <script src="globeminimap/src/Control.GlobeMiniMap.js"></script>
-    <script src="csv/leaflet.geocsv.js"></script>
-
     <script src="graticule/Leaflet.Graticule.js"></script>
 
     <link rel="stylesheet" href="betterscale/L.Control.BetterScale.css" />
     <script src="betterscale/L.Control.BetterScale.js"></script>
-    <script src="choropleth/choropleth.js" ></script>
-    <script src="../dist/leaflet.browser.print.min.js"></script>
-    <script src="src/leaflet.browser.print.js"></script>
-    <script src="src/leaflet.browser.print.utils.js"></script>
-    <script src="src/leaflet.browser.print.sizes.js"></script>
 
-	<script>
+    
+
+    <script>
                                               
                     // var map = L.map('map',
                     // {  zoom: 15
@@ -419,16 +396,18 @@ html, body{
 
                         var map = L.map('map', {
                             maxZoom: 18,
-                           // minZoom: 13,
-                           maxBounds: [
+                            minZoom: 13,
+                            maxBounds: [
                                 //south west
-                               [3.296361, -76.608913],
+                                [3.436668, -76.563472],
                                 //north east
-                               [3.532298, -76.438422]
+                                [3.501567, -76.488672]
                                 ], 
-                        }).setView([3.415616, -76.523954], 11.2);
-                        	///-3.487787, -76.528332
-                                     
+                        }).setView([3.481355, -76.523120], 13.1);
+                            ///-3.487787, -76.528332
+    
+                                 
+                            
                         var mapabase = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
                             {
                                 maxZoom: 18,
@@ -622,39 +601,41 @@ html, body{
                             var marcador4 = L.marker([3.457520, -76.536627],{icon:icono3}).bindTooltip("Now",{permanent: false, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()
 
 
-			                var marcador1 = L.geoJSON();
+                            var marcador1 = L.geoJSON();
                             var arrayPoints='[';
 
                              
-			                         function cargarM(indicador){
+                                     function cargarM(indicador){
 
-			                         if (indicador ==0){
-			                            marcador2 =L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.marker (latlng, {icon:icono3})}}).addTo(map);
-			                                }
+                                     if (indicador ==0){
+                                        marcador2 =L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.marker (latlng, {icon:icono3})}}).addTo(map);
+                                            }
 
-			                          if (indicador ==1){
-			                            marcador2 =L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.marker (latlng, {icon:icono})}}).addTo(map);
+                                      if (indicador ==1){
+                                        marcador2 =L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.marker (latlng, {icon:icono})}}).addTo(map);
 
-			                                }; map.fitBounds(marcador2.getBounds()); }
-			                                
-///////////////////////modo de ingresar popup de coordenadas en el mapa.
+                                            }; map.fitBounds(marcador2.getBounds()); }
+                                            
+
                                         var popup = L.popup();  
                                             function onMapClick(e) {
                                                 popup
                                                     .setLatLng(e.latlng)
-
-                                                    .setContent("Coordenadas:  " + e.latlng.lat+ " "+ e.latlng.lng)
-                                                    //.setContent("Coordenadas:" + e.latlng.toString())
+                                                    .setContent("Coordenadas:" + e.latlng.toString())
                                                     .openOn(map);
                                             }
                                                 map.on('click', onMapClick);
                                         
                                                         // ///  
 
+                            /////////////agregar marcadores con el click derecho
+                                            map.on("contextmenu", function (event) {
+                                              console.log("user right-clicked on map coordinates: " + event.latlng.toString());
+                                              L.marker(event.latlng).addTo(map);
+                                            });
 
-//
                                                                                          
-        //LINK PARA ICONOS https://www.freepik.com/popular-icons    
+                        //LINK PARA ICONOS https://www.freepik.com/popular-icons    
 
 
                         L.easyButton('<img src="iconos/restart.png"  align="absmiddle" height="20px" >', function() 
@@ -714,7 +695,7 @@ html, body{
 
                         L.easyButton('<img src="iconos/heatmap.png"  align="absmiddle" height="16px" >', function() 
                             {   
-                   
+                            console.log(marcador);
                        
                        var capaGeojson2 = L.geoJson(geojsonFeature, {onEachFeature: 
                                     function onEachFeature(feature, layer) 
@@ -772,23 +753,23 @@ html, body{
                                         map.addLayer(drawnItems);
                                     });
 
-///boton para imprimir
+                            ///boton para imprimir
 
                                 var printer = L.easyPrint({
-                                             position: 'topright',
-                                             tileLayer: mapabase,
-                                             sizeModes: ['Current', 'A4Landscape', 'A4Portrait'],
-                                            filename: 'map',
-                                             exportOnly: true,
+                                            position: 'topright',
+                                            tileLayer: mapabase,
+                                            sizeModes: ['Current', 'A4Landscape', 'A4Portrait'],
+                                            filename: 'myMap',
+                                            exportOnly: true,
                                             hideControlContainer: true
-                                         }).addTo(map);
+                                        }).addTo(map);
 
                                         function manualPrint () {
                                             printer.printMap('CurrentSize', 'MyManualPrint')
                                         }
 
 
-                                        console.log();
+
 
 
 
@@ -828,7 +809,7 @@ html, body{
                         leyenda.addOverlay(comunas, 'Comunas');
                         leyenda.addOverlay(manzanas, 'est_Estrato');
                         
-						
+                        
                     L.control.scalefactor().addTo(map);
 //////////////////Cargo el spin y los marcadores que van con el spin
                         map.spin(true);
@@ -838,29 +819,5 @@ html, body{
                                                     
 //////////////////////escala de barra
         L.control.betterscale({position:'bottomright'}).addTo(map);
-
- //////////////insertar lectura de archivos csv
-               function csv(){
-                  'use strict';
-
-                  $.get('csv/terreno.csv', function(csvContents) {
-                    var geoLayer = L.geoCsv(csvContents, {firstLineTitles: true, fieldSeparator: ';'});
-                    map.addLayer(geoLayer);
-                  });
-                };
-                csv();
-  /////inserto el mini mapa global              
-                var miniMap = new L.Control.GlobeMiniMap({
-                  //uncomment to assign colors
-                  // land:'#FFFF00',
-                  // water:'#3333FF',
-                  // marker:'#000000'
-                  topojsonSrc : 'globeminimap/src/world.json'
-                }).addTo(map);  
-
-
-
-        
-               
     </script>
 </html>

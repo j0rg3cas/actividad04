@@ -72,17 +72,15 @@ html, body{
 #gif{
     position:;
     left;
-    
-}
+    }
     </style>
-}
+
 
 </head>
 
 <body>
 
    
-
     <nav  class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
        <!--<a class="navbar-brand" href="#">Proyecto SIG 3</a> -->
          <img src="./img.jpg" width="50px" height="auto" />
@@ -389,384 +387,384 @@ html, body{
 
     <script>
                                               
-                    // var map = L.map('map',
-                    // {  zoom: 15
-                    //  }).setView([3.466019, -76.532962],15);////SE INSERTA UN MAPA EN EL DIV "map" //con coordenadas 3.42335,-76.52086//comuna 2:3.466019, -76.532962
+// var map = L.map('map',
+// {  zoom: 15
+//  }).setView([3.466019, -76.532962],15);////SE INSERTA UN MAPA EN EL DIV "map" //con coordenadas 3.42335,-76.52086//comuna 2:3.466019, -76.532962
 
 
-                        var map = L.map('map', {
-                            maxZoom: 18,
-                            minZoom: 13,
-                            maxBounds: [
-                                //south west
-                                [3.436668, -76.563472],
-                                //north east
-                                [3.501567, -76.488672]
-                                ], 
-                        }).setView([3.481355, -76.523120], 13.1);
-                            ///-3.487787, -76.528332
-    
-                                 
-                            
-                        var mapabase = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
-                            {
-                                maxZoom: 18,
-                                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                            });
-                        
-                        var mapabase2 = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', 
-                            {
-                                maxZoom: 18,
-                                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                            })
-                        
+  var map = L.map('map', {
+      maxZoom: 18,
+      minZoom: 13,
+      maxBounds: [
+          //south west
+          [3.436668, -76.563472],
+          //north east
+          [3.501567, -76.488672]
+          ], 
+  }).setView([3.481355, -76.523120], 13.1);
+      ///-3.487787, -76.528332
 
-                        mapabase.addTo(map);
-                        
-                        L.control.scale({position:'bottomleft'}).addTo(map);
-                        var leyenda = L.control.layers({mapabase,mapabase2}).addTo(map);
+           
+      
+  var mapabase = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
+      {
+          maxZoom: 18,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      });
+  
+  var mapabase2 = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', 
+      {
+          maxZoom: 18,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      })
+  
+
+  mapabase.addTo(map);
+  
+  L.control.scale({position:'bottomleft'}).addTo(map);
+  var leyenda = L.control.layers({mapabase,mapabase2}).addTo(map);
 
 
-                        L.control.locate({setView:'false',flyto:'false',drawCircle:'false',showCompass:'true',drawMarker:'false',keepCurrentZoomLevel:'true',locateOptions: {
-                                   enableHighAccuracy: true}}).addTo(map);
-                        
+  L.control.locate({setView:'false',flyto:'false',drawCircle:'false',showCompass:'true',drawMarker:'false',keepCurrentZoomLevel:'true',locateOptions: {
+             enableHighAccuracy: true}}).addTo(map);
+  
 
 /////// insertams la graticula
-                         L.latlngGraticule({
-                                showLabel: true,
-                                 opacity:0.7,
-                                 color: 'black',
-                                 zoomInterval: [
-                                      {start: 12, end: 18, interval: 0.03125}
-                                    ]
-                                }).addTo(map);
+   L.latlngGraticule({
+          showLabel: true,
+           opacity:0.7,
+           color: 'black',
+           zoomInterval: [
+                {start: 12, end: 18, interval: 0.03125}
+              ]
+          }).addTo(map);
 
 
-                        var icono = L.icon({
-                                iconSize: [35, 35],
-                                iconUrl:'images/winebar.png'
-                                });
-                                
-                        var icono2 = L.icon({
-                                iconSize: [35, 35],
-                                iconUrl:'images/busstop.png'
-                                });
-                        var icono3 = L.icon({
-                                iconSize: [35, 35],
-                                iconUrl:'images/hotel.png'
-                                });
+  var icono = L.icon({
+          iconSize: [35, 35],
+          iconUrl:'images/winebar.png'
+          });
+          
+  var icono2 = L.icon({
+          iconSize: [35, 35],
+          iconUrl:'images/busstop.png'
+          });
+  var icono3 = L.icon({
+          iconSize: [35, 35],
+          iconUrl:'images/hotel.png'
+          });
 
-                        var icono4 = L.icon({
-                                iconSize: [40, 35],
-                                iconUrl:'images/numbers/number_10.png'
-                                });
+  var icono4 = L.icon({
+          iconSize: [40, 35],
+          iconUrl:'images/numbers/number_10.png'
+          });
 
-                        var geojsonFeature = [{
+  var geojsonFeature = [{
 
-                       
-                         },{
-                        "type": "Feature",
-                        "properties": {"id":"01"},
-                         "geometry": {
-                            "type": "Point",
-                            "coordinates": [-76.505326,3.491492]
-                           
-                        }
-                        },{
-                        "type": "Feature",
-                        "properties": {"id":"02"},                        
-                        "geometry": {
-                            "type": "Point",
-                            "coordinates": [-76.529516,3.467757]
-                            
-                            
-                        }
-                        },{
-                        "type": "Feature",
-                        "properties": {"id":"03"},                        
-                        "geometry": {
-                            "type": "Point",
-                            "coordinates": [-76.527875,3.470038]
-                            
-                            
-                        }
-                        },{
-                        "type": "Feature",
-                         "properties": {"id":"04"},                       
-                        "geometry": {
-                            "type": "Point",
-                            "coordinates": [-76.527221,3.471141]
-                            
-                            
-                        }
-                        },{
-                        "type": "Feature",
-                        "properties": {"id":"05"},                        
-                        "geometry": {
-                            "type": "Point",
-                            "coordinates": [-76.526497,3.472496]
-                            
-                            
-                        }
-                        },{
-                        "type": "Feature",
-                        "properties": {"id":"06"},                        
-                        "geometry": {
-                            "type": "Point",
-                            "coordinates": [-76.529880,3.476132]
-                        }
-                        },{
-                        "type": "Feature",
-                        "properties": {"id":"07"},                        
-                        "geometry": {
-                            "type": "Point",
-                            "coordinates": [-76.529880,3.476132]
-                        }
-                        }, {
-                        "type": "Feature",
-                        "properties": {"id":"08"},                        
-                        "geometry": {
-                        "type": "Point",
-                         "coordinates": [-76.536759,3.454929]
-                            }
-                        },
-                        {
-                        "type": "Feature",
-                        "properties": {"id":"09"},                        
-                        "geometry": {
-                        "type": "Point",
-                         "coordinates": [-76.534702,3.457321]
-                            }
-                        },
-                        {
-                        "type": "Feature",
-                        "properties": {"id":"10"},                        
-                        "geometry": {
-                        "type": "Point",
-                         "coordinates": [-76.536223,3.458253]
-                            }
-                        },{
-                        "type": "Feature",
-                        "properties": {"id":"11"},                        
-                        "geometry": {
-                        "type": "Point",
-                         "coordinates": [-76.541512,3.454939]
-                            }
-                        },
-                        {
-                        "type": "Feature",
-                        "properties": {"id":"12"},                        
-                        "geometry": {
-                        "type": "Point",
-                         "coordinates": [-76.537175,3.458616]
-                            }
-                        }                   ];     
-                        
-                        var estilo = 
-                            {
-                                triangle: 7,
-                                fillColor: "yellow",
-                                color: "yellow",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 1,
-                            };
-                            
-                        var encima = 
-                            {
-                                triangle: 7,
-                                fillColor: "cyan",
-                                color: "cyan",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 1,
-                            };
-                            
-
-
-                        var estilo2 = L.icon( {
-                                iconSize: [10, 10],
-                                iconAnchor: [5, 10],
-                                popupAnchor:  [1, -24],
-                                //iconUrl: 'images/ejemplo.png'
-                                });
+ 
+   },{
+  "type": "Feature",
+  "properties": {"id":"01"},
+   "geometry": {
+      "type": "Point",
+      "coordinates": [-76.505326,3.491492]
+     
+  }
+  },{
+  "type": "Feature",
+  "properties": {"id":"02"},                        
+  "geometry": {
+      "type": "Point",
+      "coordinates": [-76.529516,3.467757]
+      
+      
+  }
+  },{
+  "type": "Feature",
+  "properties": {"id":"03"},                        
+  "geometry": {
+      "type": "Point",
+      "coordinates": [-76.527875,3.470038]
+      
+      
+  }
+  },{
+  "type": "Feature",
+   "properties": {"id":"04"},                       
+  "geometry": {
+      "type": "Point",
+      "coordinates": [-76.527221,3.471141]
+      
+      
+  }
+  },{
+  "type": "Feature",
+  "properties": {"id":"05"},                        
+  "geometry": {
+      "type": "Point",
+      "coordinates": [-76.526497,3.472496]
+      
+      
+  }
+  },{
+  "type": "Feature",
+  "properties": {"id":"06"},                        
+  "geometry": {
+      "type": "Point",
+      "coordinates": [-76.529880,3.476132]
+  }
+  },{
+  "type": "Feature",
+  "properties": {"id":"07"},                        
+  "geometry": {
+      "type": "Point",
+      "coordinates": [-76.529880,3.476132]
+  }
+  }, {
+  "type": "Feature",
+  "properties": {"id":"08"},                        
+  "geometry": {
+  "type": "Point",
+   "coordinates": [-76.536759,3.454929]
+      }
+  },
+  {
+  "type": "Feature",
+  "properties": {"id":"09"},                        
+  "geometry": {
+  "type": "Point",
+   "coordinates": [-76.534702,3.457321]
+      }
+  },
+  {
+  "type": "Feature",
+  "properties": {"id":"10"},                        
+  "geometry": {
+  "type": "Point",
+   "coordinates": [-76.536223,3.458253]
+      }
+  },{
+  "type": "Feature",
+  "properties": {"id":"11"},                        
+  "geometry": {
+  "type": "Point",
+   "coordinates": [-76.541512,3.454939]
+      }
+  },
+  {
+  "type": "Feature",
+  "properties": {"id":"12"},                        
+  "geometry": {
+  "type": "Point",
+   "coordinates": [-76.537175,3.458616]
+      }
+  }                   ];     
+  
+  var estilo = 
+      {
+          triangle: 7,
+          fillColor: "yellow",
+          color: "yellow",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 1,
+      };
+      
+  var encima = 
+      {
+          triangle: 7,
+          fillColor: "cyan",
+          color: "cyan",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 1,
+      };
+      
 
 
-                            var marcador = L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.circleMarker(latlng, estilo2).bindTooltip(feature.properties.id,{permanent: true, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()}});
+  var estilo2 = L.icon( {
+          iconSize: [10, 10],
+          iconAnchor: [5, 10],
+          popupAnchor:  [1, -24],
+          //iconUrl: 'images/ejemplo.png'
+          });
 
-                            var marcador2 = L.marker([3.462020, -76.534378],{icon:icono2}).bindTooltip("Clinica Policia",{permanent: true, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()
 
-                            var marcador3 = L.marker([3.455970, -76.536040],{icon:icono4}).bindTooltip("Marriott",{permanent: false, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()
+      var marcador = L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.circleMarker(latlng, estilo2).bindTooltip(feature.properties.id,{permanent: true, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()}});
 
-                            var marcador4 = L.marker([3.457520, -76.536627],{icon:icono3}).bindTooltip("Now",{permanent: false, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()
+      var marcador2 = L.marker([3.462020, -76.534378],{icon:icono2}).bindTooltip("Clinica Policia",{permanent: true, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()
+
+      var marcador3 = L.marker([3.455970, -76.536040],{icon:icono4}).bindTooltip("Marriott",{permanent: false, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()
+
+      var marcador4 = L.marker([3.457520, -76.536627],{icon:icono3}).bindTooltip("Now",{permanent: false, className: 'labelstyle', direction:'top', opacity: 1}).openTooltip()
 
 
-                            var marcador1 = L.geoJSON();
-                            var arrayPoints='[';
+      var marcador1 = L.geoJSON();
+      var arrayPoints='[';
 
-                             
-                                     function cargarM(indicador){
+       
+               function cargarM(indicador){
 
-                                     if (indicador ==0){
-                                        marcador2 =L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.marker (latlng, {icon:icono3})}}).addTo(map);
-                                            }
+               if (indicador ==0){
+                  marcador2 =L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.marker (latlng, {icon:icono3})}}).addTo(map);
+                      }
 
-                                      if (indicador ==1){
-                                        marcador2 =L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.marker (latlng, {icon:icono})}}).addTo(map);
+                if (indicador ==1){
+                  marcador2 =L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) {return L.marker (latlng, {icon:icono})}}).addTo(map);
 
-                                            }; map.fitBounds(marcador2.getBounds()); }
-                                            
+                      }; map.fitBounds(marcador2.getBounds()); }
+                      
 
-                                        var popup = L.popup();  
-                                            function onMapClick(e) {
-                                                popup
-                                                    .setLatLng(e.latlng)
-                                                    .setContent("Coordenadas:" + e.latlng.toString())
-                                                    .openOn(map);
-                                            }
-                                                map.on('click', onMapClick);
-                                        
-                                                        // ///  
+                  var popup = L.popup();  
+                      function onMapClick(e) {
+                          popup
+                              .setLatLng(e.latlng)
+                              .setContent("Coordenadas:" + e.latlng.toString())
+                              .openOn(map);
+                      }
+                          map.on('click', onMapClick);
+                  
+                                  // ///  
 
-                            /////////////agregar marcadores con el click derecho
-                                            map.on("contextmenu", function (event) {
-                                              console.log("user right-clicked on map coordinates: " + event.latlng.toString());
-                                              L.marker(event.latlng).addTo(map);
-                                            });
+      /////////////agregar marcadores con el click derecho
+                      map.on("contextmenu", function (event) {
+                        console.log("user right-clicked on map coordinates: " + event.latlng.toString());
+                        L.marker(event.latlng).addTo(map);
+                      });
 
                                                                                          
                         //LINK PARA ICONOS https://www.freepik.com/popular-icons    
 
 
-                        L.easyButton('<img src="iconos/restart.png"  align="absmiddle" height="20px" >', function() 
-                            {
-                            alert('reiniciando pagina');
-                            location.reload();
+      L.easyButton('<img src="iconos/restart.png"  align="absmiddle" height="20px" >', function() 
+          {
+          alert('reiniciando pagina');
+          location.reload();
 
-                            }).addTo(map);
-                            
-                                
-                        L.easyButton('<img src="iconos/zoom.png"  align="absmiddle" height="25px" >', function() 
-                            {
-                            
-                            cargarM(0);
-                            
-                            leyenda.addOverlay(marcador, 'Paradas');
-                            leyenda.addOverlay(marcador1, 'Paradas2');
-                            leyenda.addOverlay(marcador2, 'Clinica Policia');
-                            leyenda.addOverlay(marcador3, 'Marriott');
-                            leyenda.addOverlay(marcador4, 'Now');
-                            
+          }).addTo(map);
+          
+              
+      L.easyButton('<img src="iconos/zoom.png"  align="absmiddle" height="25px" >', function() 
+          {
+          
+          cargarM(0);
+          
+          leyenda.addOverlay(marcador, 'Paradas');
+          leyenda.addOverlay(marcador1, 'Paradas2');
+          leyenda.addOverlay(marcador2, 'Clinica Policia');
+          leyenda.addOverlay(marcador3, 'Marriott');
+          leyenda.addOverlay(marcador4, 'Now');
+          
 
-                            
-                            //map.flyTo([marcador3._latlng.lat,marcador3._latlng.lng], 15);
-                            //map.flyTo([marcador4._latlng.lat,marcador4._latlng.lng], 15);
+          
+          //map.flyTo([marcador3._latlng.lat,marcador3._latlng.lng], 15);
+          //map.flyTo([marcador4._latlng.lat,marcador4._latlng.lng], 15);
 
-                            }).addTo(map);
-                            
-                            
-                        L.easyButton('<img src="iconos/colors.png"  align="absmiddle" height="16px" position="absolute" >', function() 
-                            {
-                            var colors = $('#seleccionar_color').val();
-                                    
-                            var color_click = 
-                            {
-                                radius: 7,
-                                fillColor: $('#seleccionar_color').val(),
-                                color: "cyan",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 1,
-                            };
-                            marcador.setStyle(color_click);
-                            
-                            
-                            marcador.on('mouseover', function() 
-                                { 
-                                    this.setStyle(encima);              
-                                });
-                            marcador.on('mouseout', function() 
-                                {
-                                    this.setStyle(color_click);
-                                }); 
+          }).addTo(map);
+          
+          
+      L.easyButton('<img src="iconos/colors.png"  align="absmiddle" height="16px" position="absolute" >', function() 
+          {
+          var colors = $('#seleccionar_color').val();
+                  
+          var color_click = 
+          {
+              radius: 7,
+              fillColor: $('#seleccionar_color').val(),
+              color: "cyan",
+              weight: 1,
+              opacity: 1,
+              fillOpacity: 1,
+          };
+          marcador.setStyle(color_click);
+          
+          
+          marcador.on('mouseover', function() 
+              { 
+                  this.setStyle(encima);              
+              });
+          marcador.on('mouseout', function() 
+              {
+                  this.setStyle(color_click);
+              }); 
 
-                            }).addTo(map);
-                            
+          }).addTo(map);
+          
 
-                        L.easyButton('<img src="iconos/heatmap.png"  align="absmiddle" height="16px" >', function() 
-                            {   
-                            console.log(marcador);
-                       
-                       var capaGeojson2 = L.geoJson(geojsonFeature, {onEachFeature: 
-                                    function onEachFeature(feature, layer) 
-                                        {
-                                            //var alea=Math.floor((Math.random() * 100) + 1);
-                                      arrayPoints+='['+feature.geometry.coordinates[1]+','+feature.geometry.coordinates[0]+',"'+feature.properties.valor+'"],';   
-                                        } 
-                                    });
-                                    var y=arrayPoints.substring(0, arrayPoints.length - 1);
-                                    arrayPoints=y+'];';
-                                    var heat = L.heatLayer(eval(arrayPoints),{radius:30}).addTo(map);
-                            
+      L.easyButton('<img src="iconos/heatmap.png"  align="absmiddle" height="16px" >', function() 
+          {   
+          console.log(marcador);
+     
+     var capaGeojson2 = L.geoJson(geojsonFeature, {onEachFeature: 
+                  function onEachFeature(feature, layer) 
+                      {
+                          //var alea=Math.floor((Math.random() * 100) + 1);
+                    arrayPoints+='['+feature.geometry.coordinates[1]+','+feature.geometry.coordinates[0]+',"'+feature.properties.valor+'"],';   
+                      } 
+                  });
+                  var y=arrayPoints.substring(0, arrayPoints.length - 1);
+                  arrayPoints=y+'];';
+                  var heat = L.heatLayer(eval(arrayPoints),{radius:30}).addTo(map);
+          
 
-                            
-                            }).addTo(map);
-                        
-                                console.log(marcador);
-                              
-                        L.easyButton('<img src="iconos/off.png"  align="absmiddle" height="20px" >', function()
-                        {
-                            map.removeLayer(marcador);
-                           cargarM(1);
+          
+          }).addTo(map);
+      
+              console.log(marcador);
+            
+      L.easyButton('<img src="iconos/off.png"  align="absmiddle" height="20px" >', function()
+      {
+          map.removeLayer(marcador);
+         cargarM(1);
 
 
-                            }).addTo(map);
+          }).addTo(map);
 
-  /////// ingresar la barra de dibujo
-                        var drawnItems = new L.FeatureGroup();
+/////// ingresar la barra de dibujo
+      var drawnItems = new L.FeatureGroup();
 
-                                    var drawControl = new L.Control.Draw({
-                                        position: 'topright',
-                                        edit: {
-                                            featureGroup: drawnItems,
-                                            remove: true,
-                                            edit: false,
-                                        },
-                                        draw: {
-                                            circlemarker: false,
-                                            circle:true,
-                                            rectangle:false,
-                                            marker:false,
-                                        }
-                                    });
-                                    map.addControl(drawControl);
-                                    
-                            map.on(L.Draw.Event.CREATED, function (e) {
-                                        var type = e.layerType,
-                                            layer = e.layer;
+                  var drawControl = new L.Control.Draw({
+                      position: 'topright',
+                      edit: {
+                          featureGroup: drawnItems,
+                          remove: true,
+                          edit: false,
+                      },
+                      draw: {
+                          circlemarker: false,
+                          circle:true,
+                          rectangle:false,
+                          marker:false,
+                      }
+                  });
+                  map.addControl(drawControl);
+                  
+          map.on(L.Draw.Event.CREATED, function (e) {
+                      var type = e.layerType,
+                          layer = e.layer;
 
-                                        if (type === 'marker') {
-                                            layer.bindPopup('A popup!');
-                                        }
+                      if (type === 'marker') {
+                          layer.bindPopup('A popup!');
+                      }
 
-                                        drawnItems.addLayer(layer);
-                                        map.addLayer(drawnItems);
-                                    });
+                      drawnItems.addLayer(layer);
+                      map.addLayer(drawnItems);
+                  });
 
-                            ///boton para imprimir
+          ///boton para imprimir
 
-                                var printer = L.easyPrint({
-                                            position: 'topright',
-                                            tileLayer: mapabase,
-                                            sizeModes: ['Current', 'A4Landscape', 'A4Portrait'],
-                                            filename: 'myMap',
-                                            exportOnly: true,
-                                            hideControlContainer: true
-                                        }).addTo(map);
+        var printer = L.easyPrint({
+                    position: 'topright',
+                    tileLayer: mapabase,
+                    sizeModes: ['Current', 'A4Landscape', 'A4Portrait'],
+                    filename: 'myMap',
+                    exportOnly: true,
+                    hideControlContainer: true
+                }).addTo(map);
 
-                                        function manualPrint () {
-                                            printer.printMap('CurrentSize', 'MyManualPrint')
-                                        }
+                function manualPrint () {
+                    printer.printMap('CurrentSize', 'MyManualPrint')
+                }
 
 
 
@@ -774,48 +772,48 @@ html, body{
 
 
 /////////////////////////////GEOCODIFICADOR+
-                        new L.Control.GeoSearch({provider: new L.GeoSearch.Provider.Esri()}).addTo(map);    
-    
+        new L.Control.GeoSearch({provider: new L.GeoSearch.Provider.Esri()}).addTo(map);    
 
-                        
-                        var barrios = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
-                            {
-                            layers: 'idesc:mc_barrios',
-                            format: 'image/png',
-                            transparent: true,
-                            });
-                            map.addLayer(barrios);
-                                                    
-                            
-                        var comunas = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
-                            {
-                            layers: 'idesc:mc_comunas',
-                            format: 'image/png',
-                            transparent: true,
-                            });
-                            map.addLayer(comunas);
-                            
-                        var manzanas = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
-                            {
-                            layers: 'idesc:est_estrato_social_lado_manzana',
-                            format: 'image/png',
-                            transparent: true,
-                            });
-                            map.addLayer(manzanas);
-                            
-                        
 
-                        leyenda.addOverlay(barrios, 'Barrios');
-                        leyenda.addOverlay(comunas, 'Comunas');
-                        leyenda.addOverlay(manzanas, 'est_Estrato');
-                        
-                        
-                    L.control.scalefactor().addTo(map);
+        
+        var barrios = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+            {
+            layers: 'idesc:mc_barrios',
+            format: 'image/png',
+            transparent: true,
+            });
+            map.addLayer(barrios);
+                                    
+            
+        var comunas = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+            {
+            layers: 'idesc:mc_comunas',
+            format: 'image/png',
+            transparent: true,
+            });
+            map.addLayer(comunas);
+                            
+        var manzanas = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+            {
+            layers: 'idesc:est_estrato_social_lado_manzana',
+            format: 'image/png',
+            transparent: true,
+            });
+                map.addLayer(manzanas);
+                
+            
+
+        leyenda.addOverlay(barrios, 'Barrios');
+        leyenda.addOverlay(comunas, 'Comunas');
+        leyenda.addOverlay(manzanas, 'est_Estrato');
+              
+          
+     ' 'L.control.scalefactor().addTo(map);
 //////////////////Cargo el spin y los marcadores que van con el spin
-                        map.spin(true);
-                            setTimeout(function () {
-                                map.addLayer(marcador3,marcador4);    
-                                map.spin(false);}, 3000);
+          map.spin(true);
+              setTimeout(function () {
+                  map.addLayer(marcador3,marcador4);    
+                  map.spin(false);}, 3000);
                                                     
 //////////////////////escala de barra
         L.control.betterscale({position:'bottomright'}).addTo(map);
